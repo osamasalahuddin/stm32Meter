@@ -1,0 +1,11 @@
+.\CMSIS\*
+.\Project\Objects\*
+.\Project\Listings\*
+.\Project\*.o
+.\Project\*.d
+.\Project\*.lst
+.\Project\*.crf
+.\Project\*.htm
+.\Project\*.map
+.\Project\*.lnp
+

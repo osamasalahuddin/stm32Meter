@@ -1,0 +1,14 @@
+.\tm_stm32f4_fonts.o: ..\tm_stm32f4_fonts\tm_stm32f4_fonts.c
+.\tm_stm32f4_fonts.o: ..\tm_stm32f4_fonts\tm_stm32f4_fonts.h
+.\tm_stm32f4_fonts.o: ..\Device\Include\stm32f4xx.h
+.\tm_stm32f4_fonts.o: ..\CMSIS\Include\core_cm4.h
+.\tm_stm32f4_fonts.o: C:\Keil_v518\ARM\ARMCC\Bin\..\include\stdint.h
+.\tm_stm32f4_fonts.o: ..\CMSIS\Include\core_cmInstr.h
+.\tm_stm32f4_fonts.o: ..\CMSIS\Include\core_cmFunc.h
+.\tm_stm32f4_fonts.o: ..\CMSIS\Include\core_cm4_simd.h
+.\tm_stm32f4_fonts.o: ..\Device\Include\system_stm32f4xx.h
+.\tm_stm32f4_fonts.o: ..\defines\defines.h
+.\tm_stm32f4_fonts.o: ..\Device\StdPeriph_Driver\inc\misc.h
+.\tm_stm32f4_fonts.o: ..\Device\StdPeriph_Driver\templates\stm32f4xx_conf.h
+.\tm_stm32f4_fonts.o: ..\defines\RTE_Components.h
+.\tm_stm32f4_fonts.o: C:\Keil_v518\ARM\ARMCC\Bin\..\include\string.h
