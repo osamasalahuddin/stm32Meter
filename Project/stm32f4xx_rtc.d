@@ -1,9 +1,0 @@
-.\stm32f4xx_rtc.o: ..\Device\StdPeriph_Driver\src\stm32f4xx_rtc.c
-.\stm32f4xx_rtc.o: ..\Device\StdPeriph_Driver\inc\stm32f4xx_rtc.h
-.\stm32f4xx_rtc.o: ..\Device\Include\stm32f4xx.h
-.\stm32f4xx_rtc.o: ..\CMSIS\Include\core_cm4.h
-.\stm32f4xx_rtc.o: C:\Keil_v518\ARM\ARMCC\Bin\..\include\stdint.h
-.\stm32f4xx_rtc.o: ..\CMSIS\Include\core_cmInstr.h
-.\stm32f4xx_rtc.o: ..\CMSIS\Include\core_cmFunc.h
-.\stm32f4xx_rtc.o: ..\CMSIS\Include\core_cm4_simd.h
-.\stm32f4xx_rtc.o: ..\Device\Include\system_stm32f4xx.h

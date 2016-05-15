@@ -1,9 +1,0 @@
-.\stm32f4xx_exti.o: ..\Device\StdPeriph_Driver\src\stm32f4xx_exti.c
-.\stm32f4xx_exti.o: ..\Device\StdPeriph_Driver\inc\stm32f4xx_exti.h
-.\stm32f4xx_exti.o: ..\Device\Include\stm32f4xx.h
-.\stm32f4xx_exti.o: ..\CMSIS\Include\core_cm4.h
-.\stm32f4xx_exti.o: C:\Keil_v518\ARM\ARMCC\Bin\..\include\stdint.h
-.\stm32f4xx_exti.o: ..\CMSIS\Include\core_cmInstr.h
-.\stm32f4xx_exti.o: ..\CMSIS\Include\core_cmFunc.h
-.\stm32f4xx_exti.o: ..\CMSIS\Include\core_cm4_simd.h
-.\stm32f4xx_exti.o: ..\Device\Include\system_stm32f4xx.h
