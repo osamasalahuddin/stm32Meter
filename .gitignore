@@ -8,4 +8,6 @@ Project\*.crf
 Project\*.htm
 Project\*.map
 Project\*.lnp
+Project\Objects
+Project\Listings
 
