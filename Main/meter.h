@@ -50,11 +50,12 @@ void Toggle_Fuel_Indicator(short percentage);
 
 /* Interrupt flags for different interrupts */
 #define 	UART_RECEIVED					(1u << 0)
-#define 	REED_RECEIVED					(1u << 1)
-#define 	HEADLIGHT_RECEIVED		(1u << 2)
-#define 	LEFT_IND_RECEIVED			(1u << 3)
-#define 	RIGHT_IND_RECEIVED		(1u << 4)
-#define 	FUEL_RECEIVED					(1u << 5)
+#define 	UART_SENT							(1u << 1)
+#define 	REED_RECEIVED					(1u << 2)
+#define 	HEADLIGHT_RECEIVED		(1u << 3)
+#define 	LEFT_IND_RECEIVED			(1u << 4)
+#define 	RIGHT_IND_RECEIVED		(1u << 5)
+#define 	FUEL_RECEIVED					(1u << 6)
 
 extern char flags_meter;
 #endif

@@ -49,7 +49,7 @@ void init_UART()
 	 * Hardware flow control disabled (RTS and CTS signals)
 	 * Receive and transmit enabled
 	 */
-	USART_InitStructure.USART_BaudRate = 9600;
+	USART_InitStructure.USART_BaudRate = 115200;
 	USART_InitStructure.USART_WordLength = USART_WordLength_8b;
 	USART_InitStructure.USART_StopBits = USART_StopBits_1;
 	USART_InitStructure.USART_Parity = USART_Parity_No;
@@ -133,11 +133,6 @@ void USART1_IRQHandler(void)
 			cnt = 0;
 			USART_puts(USART1, received_string);
 		}
-	}	
-	// check if the USART1 transmit interrupt flag was set
-	if( USART_GetITStatus(USART1, USART_IT_TXE) ){
-
-
 	}
 }
 

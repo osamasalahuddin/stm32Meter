@@ -67,6 +67,9 @@ int main(void) {
 				char *rc;
 				const char token = ' ';
 				
+				/* Clear the UART_RECEIVED flag */
+				flags_meter &= ~UART_RECEIVED;
+				
 				/* Tokenize the first string to extract the RC */
 				rc = strtok((char *)received_string, &token);
 
