@@ -22,13 +22,11 @@ int RPMCounter = 0;
 
 
 int main(void) {
-    //Initialize system
-    SystemInit();
-
+    
 		init_Reed();
 		init_UART();
 
-/*		USART_puts(USART1, "Hello World\n"); */
+		USART_puts(USART1, "Hello World\n");
 	
 		//Initialize ILI9341
     TM_ILI9341_Init();

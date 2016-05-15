@@ -14,6 +14,12 @@ void Toggle_BT_Indicator(void);
 void Toggle_Headlight_Indicator(void);
 void Toggle_Fuel_Indicator(short percentage);
 
+#if defined  (HSE_VALUE)
+/* Redefine the HSE value; it's equal to 8 MHz on the STM32F4-DISCOVERY Kit */
+ #undef HSE_VALUE
+ #define HSE_VALUE    ((uint32_t)8000000) 
+#endif /* HSE_VALUE */
+
 
 /* Meter UI defines */
 #define   METER_X               120u

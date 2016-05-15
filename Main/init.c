@@ -5,10 +5,11 @@ volatile char received_string[MAX_STRLEN+1]; // this will hold the recieved stri
 
 void init_UART()
 {
-	GPIO_InitTypeDef GPIO_InitStruct; 					// this is for the GPIO pins used as TX and RX
-	USART_InitTypeDef USART_InitStructure; 				// this is for the USART1 initialization
-	NVIC_InitTypeDef NVIC_InitStructure; 				// this is used to configure the NVIC (nested vector interrupt controller)
-
+	GPIO_InitTypeDef GPIO_InitStruct; 							// this is for the GPIO pins used as TX and RX
+	USART_InitTypeDef USART_InitStructure; 					// this is for the USART1 initialization
+	NVIC_InitTypeDef NVIC_InitStructure; 						// this is used to configure the NVIC (nested vector interrupt controller)
+	USART_ClockInitTypeDef USART_ClockInitStruct;		// this is for USART1 Clock Initializations
+    
 	/* enable APB2 peripheral clock for USART1 */
 	RCC_APB2PeriphClockCmd(RCC_APB2Periph_USART1, ENABLE);
 
@@ -20,12 +21,14 @@ void init_UART()
 	/* This sequence sets up the TX and RX pins
 	 * so they work correctly with the USART1 peripheral
 	 */
-	GPIO_InitStruct.GPIO_Pin = GPIO_Pin_6 | GPIO_Pin_7; // Pins 6 (TX) and 7 (RX) are used
+	GPIO_InitStruct.GPIO_Pin = GPIO_Pin_6; 					// Pin 6 (TX) is used
 	GPIO_InitStruct.GPIO_Mode = GPIO_Mode_AF; 			// the pins are configured as alternate function so the USART peripheral has access to them
-	GPIO_InitStruct.GPIO_Speed = GPIO_Speed_50MHz;		// this defines the IO speed and has nothing to do with the baudrate!
+	GPIO_InitStruct.GPIO_Speed = GPIO_Speed_50MHz;	// this defines the IO speed and has nothing to do with the baudrate!
 	GPIO_InitStruct.GPIO_OType = GPIO_OType_PP;			// this defines the output type as push pull mode (as opposed to open drain)
-	GPIO_InitStruct.GPIO_PuPd = GPIO_PuPd_UP;			// this activates the pullup resistors on the IO pins
-	GPIO_Init(GPIOB, &GPIO_InitStruct);					// now all the values are passed to the GPIO_Init() function which sets the GPIO registers
+	GPIO_Init(GPIOB, &GPIO_InitStruct);							// now all the values are passed to the GPIO_Init() function which sets the GPIO registers
+	GPIO_InitStruct.GPIO_Pin = GPIO_Pin_7; 					// Pin 7 (RX) is used
+	GPIO_InitStruct.GPIO_PuPd = GPIO_PuPd_UP;				// this activates the pullup resistors on the IO pins
+	GPIO_Init(GPIOB, &GPIO_InitStruct);							// now all the values are passed to the GPIO_Init() function which sets the GPIO registers
 
 	/* The RX and TX pins are now connected to their AF
 	 * so that the USART1 can take over control of the
@@ -33,6 +36,10 @@ void init_UART()
 	 */
 	GPIO_PinAFConfig(GPIOB, GPIO_PinSource6, GPIO_AF_USART1); 
 	GPIO_PinAFConfig(GPIOB, GPIO_PinSource7, GPIO_AF_USART1);
+
+	/* Make sure syncro clock is turned off */
+	USART_ClockStructInit( &USART_ClockInitStruct );
+	USART_ClockInit( USART1, &USART_ClockInitStruct  );
 
 	/* USARTx configured as follow:
 	 * BaudRate = 115200 baud  
@@ -42,7 +49,7 @@ void init_UART()
 	 * Hardware flow control disabled (RTS and CTS signals)
 	 * Receive and transmit enabled
 	 */
-	USART_InitStructure.USART_BaudRate = 115200;
+	USART_InitStructure.USART_BaudRate = 9600;
 	USART_InitStructure.USART_WordLength = USART_WordLength_8b;
 	USART_InitStructure.USART_StopBits = USART_StopBits_1;
 	USART_InitStructure.USART_Parity = USART_Parity_No;
@@ -126,6 +133,11 @@ void USART1_IRQHandler(void)
 			cnt = 0;
 			USART_puts(USART1, received_string);
 		}
+	}	
+	// check if the USART1 transmit interrupt flag was set
+	if( USART_GetITStatus(USART1, USART_IT_TXE) ){
+
+
 	}
 }
 

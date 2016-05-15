@@ -132,12 +132,12 @@
             <UseExternalTool>0</UseExternalTool>
             <RunIndependent>0</RunIndependent>
             <UpdateFlashBeforeDebugging>1</UpdateFlashBeforeDebugging>
-            <Capability>0</Capability>
-            <DriverSelection>-1</DriverSelection>
+            <Capability>1</Capability>
+            <DriverSelection>4096</DriverSelection>
           </Flash1>
           <bUseTDR>1</bUseTDR>
           <Flash2>BIN\UL2CM3.DLL</Flash2>
-          <Flash3></Flash3>
+          <Flash3>"" ()</Flash3>
           <Flash4></Flash4>
           <pFcarmOut></pFcarmOut>
           <pFcarmGrp></pFcarmGrp>
@@ -313,7 +313,7 @@
             <Optim>1</Optim>
             <oTime>0</oTime>
             <SplitLS>0</SplitLS>
-            <OneElfS>1</OneElfS>
+            <OneElfS>0</OneElfS>
             <Strict>0</Strict>
             <EnumInt>0</EnumInt>
             <PlainCh>0</PlainCh>
@@ -330,7 +330,7 @@
             <vShortWch>1</vShortWch>
             <VariousControls>
               <MiscControls></MiscControls>
-              <Define>USE_STDPERIPH_DRIVER, STM32F40XX</Define>
+              <Define>USE_STDPERIPH_DRIVER, STM32F40XX, HSE_VALUE=8000000</Define>
               <Undefine></Undefine>
               <IncludePath>..\CMSIS\DSP_Lib\Examples\Common\Include;..\CMSIS\Include;..\Device\Include;..\Device\StdPeriph_Driver\inc;..\Device\StdPeriph_Driver\templates;..\tm_stm32f4_dma;..\tm_stm32f4_fonts;..\tm_stm32f4_gpio_2;..\tm_stm32f4_ili9341;..\tm_stm32f4_spi_2;..\tm_stm32f4_spi_dma;..\defines;..\Main</IncludePath>
             </VariousControls>
@@ -353,7 +353,7 @@
             </VariousControls>
           </Aads>
           <LDads>
-            <umfTarg>0</umfTarg>
+            <umfTarg>1</umfTarg>
             <Ropi>0</Ropi>
             <Rwpi>0</Rwpi>
             <noStLib>0</noStLib>
@@ -399,6 +399,11 @@
               <FileName>init.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\Main\init.c</FilePath>
+            </File>
+            <File>
+              <FileName>startup_stm32f4xx.s</FileName>
+              <FileType>2</FileType>
+              <FilePath>..\Device\startup_stm32f4xx.s</FilePath>
             </File>
           </Files>
         </Group>
@@ -609,13 +614,6 @@
         </Group>
         <Group>
           <GroupName>cmsis</GroupName>
-          <Files>
-            <File>
-              <FileName>startup_stm32f4xx.s</FileName>
-              <FileType>2</FileType>
-              <FilePath>..\Device\startup_stm32f4xx.s</FilePath>
-            </File>
-          </Files>
         </Group>
       </Groups>
     </Target>

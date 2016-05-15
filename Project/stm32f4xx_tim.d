@@ -1,0 +1,10 @@
+.\stm32f4xx_tim.o: ..\Device\StdPeriph_Driver\src\stm32f4xx_tim.c
+.\stm32f4xx_tim.o: ..\Device\StdPeriph_Driver\inc\stm32f4xx_tim.h
+.\stm32f4xx_tim.o: ..\Device\Include\stm32f4xx.h
+.\stm32f4xx_tim.o: ..\CMSIS\Include\core_cm4.h
+.\stm32f4xx_tim.o: C:\Keil_v518\ARM\ARMCC\Bin\..\include\stdint.h
+.\stm32f4xx_tim.o: ..\CMSIS\Include\core_cmInstr.h
+.\stm32f4xx_tim.o: ..\CMSIS\Include\core_cmFunc.h
+.\stm32f4xx_tim.o: ..\CMSIS\Include\core_cm4_simd.h
+.\stm32f4xx_tim.o: ..\Device\Include\system_stm32f4xx.h
+.\stm32f4xx_tim.o: ..\Device\StdPeriph_Driver\inc\stm32f4xx_rcc.h
