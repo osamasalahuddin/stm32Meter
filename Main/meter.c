@@ -149,3 +149,10 @@ void Toggle_Fuel_Indicator(short percentage)
 	}
 }
 
+int Ascii2Hex(char *arr)
+{
+	/* Converts the 2 digit ASCII numbers to their hex values */
+	int num = (arr[0]-0x30) * 10 + arr[1]-0x30;
+
+	return num;
+}

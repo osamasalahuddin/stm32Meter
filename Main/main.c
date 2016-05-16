@@ -66,6 +66,7 @@ int main(void) {
 				/* Data received from Bluetooth */
 				char *rc;
 				const char token = ' ';
+				int code;
 				
 				/* Clear the UART_RECEIVED flag */
 				flags_meter &= ~UART_RECEIVED;
@@ -73,8 +74,10 @@ int main(void) {
 				/* Tokenize the first string to extract the RC */
 				rc = strtok((char *)received_string, &token);
 
+				code = Ascii2Hex(rc);
+				
 				/* Type casting rc's value into int to get Request Codes */
-				switch((int)rc[0])
+				switch(code)
 				{
 					case RC_SMS:
 					{
