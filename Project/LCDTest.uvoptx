@@ -196,9 +196,9 @@
         <Bp>
           <Number>0</Number>
           <Type>0</Type>
-          <LineNumber>31</LineNumber>
+          <LineNumber>72</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>134218298</Address>
+          <Address>134218430</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -207,57 +207,21 @@
           <BreakIfRCount>1</BreakIfRCount>
           <Filename>..\Main\main.c</Filename>
           <ExecCommand></ExecCommand>
-          <Expression>\\LCDTest\../Main/main.c\31</Expression>
-        </Bp>
-        <Bp>
-          <Number>1</Number>
-          <Type>0</Type>
-          <LineNumber>119</LineNumber>
-          <EnabledFlag>1</EnabledFlag>
-          <Address>134220084</Address>
-          <ByteObject>0</ByteObject>
-          <HtxType>0</HtxType>
-          <ManyObjects>0</ManyObjects>
-          <SizeOfObject>0</SizeOfObject>
-          <BreakByAccess>0</BreakByAccess>
-          <BreakIfRCount>1</BreakIfRCount>
-          <Filename>..\Main\init.c</Filename>
-          <ExecCommand></ExecCommand>
-          <Expression>\\LCDTest\../Main/init.c\119</Expression>
-        </Bp>
-        <Bp>
-          <Number>2</Number>
-          <Type>0</Type>
-          <LineNumber>175</LineNumber>
-          <EnabledFlag>1</EnabledFlag>
-          <Address>134220176</Address>
-          <ByteObject>0</ByteObject>
-          <HtxType>0</HtxType>
-          <ManyObjects>0</ManyObjects>
-          <SizeOfObject>0</SizeOfObject>
-          <BreakByAccess>0</BreakByAccess>
-          <BreakIfRCount>1</BreakIfRCount>
-          <Filename>..\Device\startup_stm32f4xx.s</Filename>
-          <ExecCommand></ExecCommand>
-          <Expression>\\LCDTest\../Device/startup_stm32f4xx.s\175</Expression>
-        </Bp>
-        <Bp>
-          <Number>3</Number>
-          <Type>0</Type>
-          <LineNumber>158</LineNumber>
-          <EnabledFlag>1</EnabledFlag>
-          <Address>134220050</Address>
-          <ByteObject>0</ByteObject>
-          <HtxType>0</HtxType>
-          <ManyObjects>0</ManyObjects>
-          <SizeOfObject>0</SizeOfObject>
-          <BreakByAccess>0</BreakByAccess>
-          <BreakIfRCount>1</BreakIfRCount>
-          <Filename>..\Main\init.c</Filename>
-          <ExecCommand></ExecCommand>
-          <Expression>\\LCDTest\../Main/init.c\158</Expression>
+          <Expression>\\LCDTest\../Main/main.c\72</Expression>
         </Bp>
       </Breakpoint>
+      <WatchWindow1>
+        <Ww>
+          <count>0</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>received_string</ItemText>
+        </Ww>
+        <Ww>
+          <count>1</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>rc</ItemText>
+        </Ww>
+      </WatchWindow1>
       <Tracepoint>
         <THDelay>0</THDelay>
       </Tracepoint>
@@ -342,7 +306,7 @@
       <GroupNumber>1</GroupNumber>
       <FileNumber>4</FileNumber>
       <FileType>1</FileType>
-      <tvExp>0</tvExp>
+      <tvExp>1</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\Main\meter.c</PathWithFileName>

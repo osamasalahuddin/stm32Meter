@@ -62,19 +62,15 @@ int main(void) {
 
 			if (flags_meter & UART_RECEIVED)
 			{
-			
+
 				/* Data received from Bluetooth */
 				char *rc;
-				const char token = ' ';
 				int code;
 				
 				/* Clear the UART_RECEIVED flag */
 				flags_meter &= ~UART_RECEIVED;
 				
-				/* Tokenize the first string to extract the RC */
-				rc = strtok((char *)received_string, &token);
-
-				code = Ascii2Hex(rc);
+				code = parseString(received_string);
 				
 				/* Type casting rc's value into int to get Request Codes */
 				switch(code)
@@ -83,14 +79,20 @@ int main(void) {
 					{
 						/* Sms Received Display the Name on the Screen */
 						
-						rc = strtok((char*)received_string, NULL);
 						
-						//Put string with black foreground color and red background with 11x18px font
-						TM_ILI9341_Puts(140, 225, rc, &TM_Font_7x10, ILI9341_COLOR_BLACK, ILI9341_COLOR_ORANGE);
-
 
 						break;
 					}
+					case RC_CALL:
+					{
+						
+						/* Call Received Display the Name and number on the Screen */
+						draw_CallerName(received_string);
+						
+						break;
+
+					}
+					
 					default:
 						/* Should Never arrive here, If it does then 
 							 the app and meter are not in same version */

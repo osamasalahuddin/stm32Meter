@@ -14,6 +14,7 @@ void Toggle_BT_Indicator(void);
 void Toggle_Headlight_Indicator(void);
 void Toggle_Fuel_Indicator(short percentage);
 int Ascii2Hex(char *arr);
+void draw_CallerName(char* str);
 
 #if defined  (HSE_VALUE)
 /* Redefine the HSE value; it's equal to 8 MHz on the STM32F4-DISCOVERY Kit */
