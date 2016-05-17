@@ -65,12 +65,14 @@ int main(void) {
 
 				/* Data received from Bluetooth */
 				char *rc;
+				char name[30];
+				char number[10];
 				int code;
 				
 				/* Clear the UART_RECEIVED flag */
 				flags_meter &= ~UART_RECEIVED;
 				
-				code = parseString(received_string);
+				code = parseString(received_string, name, number);
 				
 				/* Type casting rc's value into int to get Request Codes */
 				switch(code)

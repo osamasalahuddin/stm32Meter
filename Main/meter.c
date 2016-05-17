@@ -149,38 +149,41 @@ void Toggle_Fuel_Indicator(short percentage)
 	}
 }
 
-int parseString(char* str)
+int parseString(char* str, char* name, char* number)
 {
 	int code;
 	char *rc;
-	const char token = ' ';
+	const char token = ';';
 
-	/* Parse the string and extract RCs and other information */
-
-	/* Tokenize the first string to extract the RC */
+	/* Tokenize the first string to extract the RC string */
 	rc = strtok((char *)str, &token);
 
-	/* Increment the pointer to skip the RC codes */
-	rc += 3;
-
+	/* Parse the string and extract RCs and other information */
 	code = Ascii2Hex(rc);
 
-	return code;
+	/* Tokenize the first string to extract the Contact Number */
+	name = strtok((char *)str, NULL);
 
+	/* Tokenize the first string to extract the Contact Name */
+	number = strtok((char *)str, NULL);
+
+	return code;
 }
 
-void draw_CallerName(char* str)
+void draw_CallerName(char* str, char* name, char* number)
 {
 	/* Draw the calling persons Name on the meter */
 	
 	int code;
 	char *rc;
-	const char token = ' ';
+	const char token = ';';
 
 	/* Parse the string and extract RCs and other information */
 
 	/* Tokenize the first string to extract the RC */
 	rc = strtok((char *)str, &token);
+	
+	code = (int) Ascii2Hex(rc);
 	
 	//Put string with black foreground color and red background with 11x18px font
 	TM_ILI9341_Puts(210, 125, str, &TM_Font_11x18, ILI9341_COLOR_BLACK, ILI9341_COLOR_ORANGE);
@@ -190,7 +193,33 @@ void draw_CallerName(char* str)
 
 	//Put string with black foreground color and red background with 11x18px font
 	TM_ILI9341_Puts(210, 145, str, &TM_Font_11x18, ILI9341_COLOR_BLACK, ILI9341_COLOR_ORANGE);
+
+}
+
+int draw_SMSName(char* str)
+{
+	/* Draw the calling persons Name on the meter */
 	
+	int code;
+	char *rc;
+	const char token = ';';
+
+	/* Parse the string and extract RCs and other information */
+
+	/* Tokenize the first string to extract the RC */
+	rc = strtok((char *)str, &token);
+	
+	code = (int) Ascii2Hex(rc);
+	
+	//Put string with black foreground color and red background with 11x18px font
+	TM_ILI9341_Puts(210, 75, str, &TM_Font_11x18, ILI9341_COLOR_BLACK, ILI9341_COLOR_ORANGE);
+
+	/* Tokenize the first string to extract the RC */
+	rc = strtok((char *)str, NULL);
+
+	//Put string with black foreground color and red background with 11x18px font
+	TM_ILI9341_Puts(210, 95, str, &TM_Font_11x18, ILI9341_COLOR_BLACK, ILI9341_COLOR_ORANGE);
+
 }
 
 int Ascii2Hex(char *arr)
