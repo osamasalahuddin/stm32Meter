@@ -67,6 +67,7 @@ int main(void) {
 				char *rc;
 				char name[30];
 				char number[10];
+				char smsBody[200];
 				int code;
 				
 				/* Clear the UART_RECEIVED flag */
@@ -89,7 +90,7 @@ int main(void) {
 					{
 						
 						/* Call Received Display the Name and number on the Screen */
-						draw_CallerName(received_string);
+						draw_CallerName((char *)received_string, name, number);
 						
 						break;
 
