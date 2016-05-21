@@ -153,19 +153,27 @@ int parseString(char* str, char* name, char* number)
 {
 	int code;
 	char *rc;
-	const char token = ';';
+	static char temp[50];
+	const char token = ':';
+	int i = 0;
+	
+	for (i; i < 50; i++)
+	{
+		/* Create a temp copy of the original string */
+		temp[i] = str[i];
+	}
 
 	/* Tokenize the first string to extract the RC string */
-	rc = strtok((char *)str, &token);
+	rc = strtok((char *)temp, &token);
 
 	/* Parse the string and extract RCs and other information */
 	code = Ascii2Hex(rc);
 
 	/* Tokenize the first string to extract the Contact Number */
-	name = strtok((char *)str, NULL);
+	name = strtok(NULL, &token);
 
 	/* Tokenize the first string to extract the Contact Name */
-	number = strtok((char *)str, NULL);
+	number = strtok(NULL, &token);
 
 	return code;
 }
@@ -176,23 +184,24 @@ void draw_CallerName(char* str, char* name, char* number)
 	
 	int code;
 	char *rc;
-	const char token = ';';
+	const char token = ':';
 
 	/* Parse the string and extract RCs and other information */
 
 	/* Tokenize the first string to extract the RC */
 	rc = strtok((char *)str, &token);
-	
-	code = (int) Ascii2Hex(rc);
+
+	/* Tokenize the second string to extract the name */
+	name = strtok(NULL, &token);
 	
 	//Put string with black foreground color and red background with 11x18px font
-	TM_ILI9341_Puts(210, 125, str, &TM_Font_11x18, ILI9341_COLOR_BLACK, ILI9341_COLOR_ORANGE);
+	TM_ILI9341_Puts(190, 125, name, &TM_Font_11x18, ILI9341_COLOR_BLACK, ILI9341_COLOR_ORANGE);
 
-	/* Tokenize the first string to extract the RC */
-	rc = strtok((char *)str, NULL);
+	/* Tokenize the first string to extract the number */
+	number = strtok(NULL, &token);
 
 	//Put string with black foreground color and red background with 11x18px font
-	TM_ILI9341_Puts(210, 145, str, &TM_Font_11x18, ILI9341_COLOR_BLACK, ILI9341_COLOR_ORANGE);
+	TM_ILI9341_Puts(190, 145, number, &TM_Font_11x18, ILI9341_COLOR_BLACK, ILI9341_COLOR_ORANGE);
 
 }
 
@@ -202,23 +211,30 @@ int draw_SMSName(char* str)
 	
 	int code;
 	char *rc;
-	const char token = ';';
+	const char token = ':';
 
 	/* Parse the string and extract RCs and other information */
 
 	/* Tokenize the first string to extract the RC */
 	rc = strtok((char *)str, &token);
 	
-	code = (int) Ascii2Hex(rc);
-	
-	//Put string with black foreground color and red background with 11x18px font
-	TM_ILI9341_Puts(210, 75, str, &TM_Font_11x18, ILI9341_COLOR_BLACK, ILI9341_COLOR_ORANGE);
-
-	/* Tokenize the first string to extract the RC */
-	rc = strtok((char *)str, NULL);
+	/* Tokenize the first string to extract the name */
+	rc = strtok(NULL, &token);
 
 	//Put string with black foreground color and red background with 11x18px font
-	TM_ILI9341_Puts(210, 95, str, &TM_Font_11x18, ILI9341_COLOR_BLACK, ILI9341_COLOR_ORANGE);
+	TM_ILI9341_Puts(190, 95, rc, &TM_Font_11x18, ILI9341_COLOR_BLACK, ILI9341_COLOR_ORANGE);
+
+	/* Tokenize the first string to extract the number */
+	rc = strtok(NULL, &token);
+
+	//Put string with black foreground color and red background with 11x18px font
+	TM_ILI9341_Puts(190, 105, rc, &TM_Font_11x18, ILI9341_COLOR_BLACK, ILI9341_COLOR_ORANGE);
+
+	/* Tokenize the first string to extract the SMS */
+	rc = strtok(NULL, &token);
+
+	//Put string with black foreground color and red background with 11x18px font
+	TM_ILI9341_Puts(190, 125, rc, &TM_Font_11x18, ILI9341_COLOR_BLACK, ILI9341_COLOR_ORANGE);
 
 }
 

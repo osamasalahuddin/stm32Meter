@@ -40,15 +40,15 @@ int main(void) {
     //Put string with black foreground color and red background with 11x18px font
     TM_ILI9341_Puts(245, 225, "idealojy", &TM_Font_7x10, ILI9341_COLOR_BLACK, ILI9341_COLOR_ORANGE);
 
-    while (1) {
+    while (1) 
+		{
 
 			int i = 0;
 			Toggle_Left_Indicator();
 			Toggle_Right_Indicator();
-			Toggle_BT_Indicator();
 			Toggle_Headlight_Indicator();
 			Toggle_Fuel_Indicator(0);
-			
+
 			if (update_Reed())
 			{
 
@@ -65,35 +65,41 @@ int main(void) {
 
 				/* Data received from Bluetooth */
 				char *rc;
-				char name[30];
-				char number[10];
+				volatile char *name;
+				volatile char *number;
 				char smsBody[200];
 				int code;
-				
+
 				/* Clear the UART_RECEIVED flag */
 				flags_meter &= ~UART_RECEIVED;
-				
+
 				code = parseString(received_string, name, number);
-				
+
 				/* Type casting rc's value into int to get Request Codes */
 				switch(code)
 				{
 					case RC_SMS:
 					{
 						/* Sms Received Display the Name on the Screen */
-						
-						
+						draw_SMSName((char *)received_string);
 
 						break;
 					}
 					case RC_CALL:
 					{
-						
+
 						/* Call Received Display the Name and number on the Screen */
 						draw_CallerName((char *)received_string, name, number);
-						
+
 						break;
 
+					}
+					case RC_BLUETOOTH:
+					{
+						/* Connection Established display the Bluetooth icon */
+						Toggle_BT_Indicator();
+
+						break;
 					}
 					
 					default:

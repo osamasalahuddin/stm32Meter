@@ -43,10 +43,10 @@ void draw_CallerName(char* str,char* name, char* number);
 /* Meter Request Codes */
 #define 	RC_SMS								01U
 #define		RC_CALL								02U
-#define		RC_SPEED							03U
+#define		RC_BLUETOOTH					03U
 #define		RC_DISTANCE						04U
 #define		RC_RPM								05U
-#define		RC_BLUETOOTH					06U
+#define		RC_SPEED							06U
 #define		RC_FUEL								07U
 #define		RC_ENGNE_OIL					08U
 

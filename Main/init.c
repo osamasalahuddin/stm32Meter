@@ -64,13 +64,13 @@ void init_UART()
 	 * to jump to the USART1_IRQHandler() function
 	 * if the USART1 receive interrupt occurs
 	 */
-	USART_ITConfig(USART1, USART_IT_RXNE, ENABLE); 		// enable the USART1 receive interrupt
+	USART_ITConfig(USART1, USART_IT_RXNE, ENABLE); 						// enable the USART1 receive interrupt
 
-	NVIC_InitStructure.NVIC_IRQChannel = USART1_IRQn;	// we want to configure the USART1 interrupts
-	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 0;// this sets the priority group of the USART1 interrupts
-	NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0;	// this sets the sub priority inside the group
-	NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;		// the USART1 interrupts are globally enabled
-	NVIC_Init(&NVIC_InitStructure);						// the properties are passed to the NVIC_Init function which takes care of the low level stuff
+	NVIC_InitStructure.NVIC_IRQChannel = USART1_IRQn;					// we want to configure the USART1 interrupts
+	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 0;	// this sets the priority group of the USART1 interrupts
+	NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0;				// this sets the sub priority inside the group
+	NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;						// the USART1 interrupts are globally enabled
+	NVIC_Init(&NVIC_InitStructure);														// the properties are passed to the NVIC_Init function which takes care of the low level stuff
 
 	// finally this enables the complete USART1 peripheral
 	USART_Cmd(USART1, ENABLE);
@@ -131,7 +131,7 @@ void USART1_IRQHandler(void)
 		}
 		else{ // otherwise reset the character counter and print the received string
 			cnt = 0;
-			USART_puts(USART1, received_string);
+			/*USART_puts(USART1, received_string);*/
 		}
 	}
 }
