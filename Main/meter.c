@@ -228,13 +228,13 @@ int draw_SMSName(char* str)
 	rc = strtok(NULL, &token);
 
 	//Put string with black foreground color and red background with 11x18px font
-	TM_ILI9341_Puts(190, 105, rc, &TM_Font_11x18, ILI9341_COLOR_BLACK, ILI9341_COLOR_ORANGE);
+	TM_ILI9341_Puts(190, 115, rc, &TM_Font_11x18, ILI9341_COLOR_BLACK, ILI9341_COLOR_ORANGE);
 
 	/* Tokenize the first string to extract the SMS */
 	rc = strtok(NULL, &token);
 
 	//Put string with black foreground color and red background with 11x18px font
-	TM_ILI9341_Puts(190, 125, rc, &TM_Font_11x18, ILI9341_COLOR_BLACK, ILI9341_COLOR_ORANGE);
+	TM_ILI9341_Puts(190, 135, rc, &TM_Font_11x18, ILI9341_COLOR_BLACK, ILI9341_COLOR_ORANGE);
 
 }
 

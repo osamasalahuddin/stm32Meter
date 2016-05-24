@@ -79,6 +79,8 @@ void init_UART()
 void init_Reed()
 {
 	GPIO_InitTypeDef GPIO_InitStructure; 					// this is for the GPIO pins used as TX and RX
+	EXTI_InitTypeDef EXTI_InitStructure;					// EXTI Interrupt Configurations
+	NVIC_InitTypeDef NVIC_InitStructure; 					// this is used to configure the NVIC (nested vector interrupt controller)
 	
 	/* Configure AHB1 Clock */
 	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOE, ENABLE);
@@ -98,12 +100,28 @@ void init_Reed()
 
 	GPIO_Init(GPIOE,&GPIO_InitStructure);
 
+  /* Connect EXTI Line0 to PE5 pin */
+  SYSCFG_EXTILineConfig(EXTI_PortSourceGPIOE       , EXTI_PinSource0);
+
+  /* Configure EXTI Line0 */
+  EXTI_InitStructure.EXTI_Line = EXTI_Line0;
+  EXTI_InitStructure.EXTI_Mode = EXTI_Mode_Interrupt;
+  EXTI_InitStructure.EXTI_Trigger = EXTI_Trigger_Rising;  
+  EXTI_InitStructure.EXTI_LineCmd = ENABLE;
+  EXTI_Init(&EXTI_InitStructure);
+
+  /* Enable and set EXTI Line0 Interrupt to the lowest priority */
+  NVIC_InitStructure.NVIC_IRQChannel = EXTI0_IRQn;
+  NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 0x01;
+  NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0x01;
+  NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
+  NVIC_Init(&NVIC_InitStructure);
 }
 
 char update_Reed()
 {
 	/* Set REED_RECEIVED flag */
-	flags_meter |= REED_RECEIVED;
+	/* flags_meter |= REED_RECEIVED; */
 	return	(char)(GPIO_ReadInputData(GPIOE) & GPIO_Pin_5);
 }
 
@@ -117,7 +135,7 @@ void USART1_IRQHandler(void)
 
 		static uint8_t cnt = 0; // this counter is used to determine the string length
 		char t = USART1->DR; // the character from the USART1 data register is saved in t
-		
+
 		/* Set UART_RECEIVED flag */
 		flags_meter |= UART_RECEIVED;
 
@@ -136,6 +154,18 @@ void USART1_IRQHandler(void)
 	}
 }
 
+/* This function handles External line 0 interrupt request. */
+void EXTI0_IRQHandler(void)
+{
+  if(EXTI_GetITStatus(EXTI_Line0) != RESET)
+  {
+    /* Set REED_RECEIVED flag */
+		flags_meter |= REED_RECEIVED;
+
+    /* Clear the EXTI line 0 pending bit */
+    EXTI_ClearITPendingBit(EXTI_Line0);
+  }
+}
 
 /* This function is used to transmit a string of characters via
  * the USART specified in USARTx.

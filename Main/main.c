@@ -40,7 +40,7 @@ int main(void) {
     //Put string with black foreground color and red background with 11x18px font
     TM_ILI9341_Puts(245, 225, "idealojy", &TM_Font_7x10, ILI9341_COLOR_BLACK, ILI9341_COLOR_ORANGE);
 
-    while (1) 
+    while (1)
 		{
 
 			int i = 0;
@@ -49,8 +49,11 @@ int main(void) {
 			Toggle_Headlight_Indicator();
 			Toggle_Fuel_Indicator(0);
 
-			if (update_Reed())
+			if (flags_meter & REED_RECEIVED)
 			{
+
+				/* Clear the REED_RECEIVED flag */
+				flags_meter &= ~REED_RECEIVED;
 
 				/* Reed switch is short */
 				SpeedCounter++;
