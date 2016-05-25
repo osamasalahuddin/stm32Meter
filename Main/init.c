@@ -87,20 +87,20 @@ void init_Reed()
 	RCC_APB2PeriphClockCmd(RCC_APB2Periph_SYSCFG, ENABLE);
 
 	/* GPIO configured as follows:
-	 * GPIO Pin = PE5
+	 * GPIO Pin = PE0
 	 * GPIO Mode = Input
 	 * GPIO PullUp = Pull Down
 	 * GPIO Speed = Medium Speed
 	 */
 	
-	GPIO_InitStructure.GPIO_Pin  = GPIO_Pin_5;
+	GPIO_InitStructure.GPIO_Pin  = GPIO_Pin_0;
 	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN;
 	GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_DOWN;
 	GPIO_InitStructure.GPIO_Speed = GPIO_Medium_Speed;
 
 	GPIO_Init(GPIOE,&GPIO_InitStructure);
 
-  /* Connect EXTI Line0 to PE5 pin */
+  /* Connect EXTI Line0 to PE0 pin */
   SYSCFG_EXTILineConfig(EXTI_PortSourceGPIOE       , EXTI_PinSource0);
 
   /* Configure EXTI Line0 */
